@@ -53,7 +53,7 @@ public class Main implements ClientModInitializer {
 
             boolean cancelled = eventBus.post(new ChatMsgEvent(message, msg)).isCancelled();
             if (msg.startsWith("Party > ") && msg.contains(": ")) {
-                int nameStart = msg.contains("]") & msg.indexOf("]") < msg.indexOf(":") ? msg.indexOf("]") : msg.indexOf(">");
+                int nameStart = msg.contains("]") && msg.indexOf("]") < msg.indexOf(":") ? msg.indexOf("]") : msg.indexOf(">");
                 String[] clean = msg.replace(msg.substring(0, nameStart + 1), "").split(":", 2);
                 String author = clean[0].trim(), content = clean[1].trim();
                 cancelled = eventBus.post(new PartyChatMsgEvent(content, author)).isCancelled() || cancelled;
@@ -61,7 +61,9 @@ public class Main implements ClientModInitializer {
             return !cancelled;
         });
 
-        eventBus.registerLambdaFactory(MOD_ID, (lookupInMethod, glass) -> (MethodHandles.Lookup) lookupInMethod.invoke(null, glass, MethodHandles.lookup()));
+        eventBus.registerLambdaFactory("com.jelly.farmhelper",
+                (lookupInMethod, klass) -> (MethodHandles.Lookup)
+                        lookupInMethod.invoke(null, klass, MethodHandles.lookup()));
 
         eventBus.subscribe(SpaceFarmer.class);
 
