@@ -28,7 +28,7 @@ loom {
     splitEnvironmentSourceSets()
 
     mods {
-        "farmhelper" {
+        "somefrills" {
             sourceSet sourceSets.main
             sourceSet sourceSets.client
         }
@@ -55,7 +55,7 @@ dependencies {
 }
 
 loom {
-    accessWidenerPath = file("src/main/resources/farmhelper.accesswidener")
+    accessWidenerPath = file("src/main/resources/somefrills.accesswidener")
 }
 
 processResources {
