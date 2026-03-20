@@ -13,14 +13,12 @@
   "entrypoints": {
     "client": [
       "com.jelly.farmhelper.Main"
-    ],
-    "modmenu": [
-      "com.jelly.farmhelper.ModMenuIntegration"
     ]
   },
   "mixins": [
     "farmhelper.mixins.json"
   ],
+  "accessWidener" : "farmhelper.accesswidener",
   "depends": {
     "fabricloader": ">=0.16.14",
     "minecraft": "~1.21.10",

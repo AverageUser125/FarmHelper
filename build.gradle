@@ -23,6 +23,11 @@ repositories {
         name = "meteor-maven"
         url = "https://maven.meteordev.org/releases"
     }
+
+    maven {
+        name = "wispforest-maven"
+        url = 'https://maven.wispforest.io/releases/'
+    }
 }
 
 loom {
@@ -46,13 +51,16 @@ dependencies {
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    // ModMenu for config screen
-    modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-    modApi("me.shedaniel.cloth:cloth-config-fabric:20.0.149") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
-
+    modImplementation "meteordevelopment:orbit:${project.orbit_version}"
     include "meteordevelopment:orbit:${project.orbit_version}"
+
+    modImplementation("io.wispforest:owo-lib:${project.owolib_version}")
+    include "io.wispforest:owo-sentinel:${project.owolib_version}"
+
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/farmhelper.accesswidener")
 }
 
 processResources {
