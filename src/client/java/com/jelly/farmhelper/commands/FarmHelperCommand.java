@@ -1,9 +1,11 @@
-package commands;
+package com.jelly.farmhelper.commands;
 
 import com.jelly.farmhelper.config.Config;
+import com.jelly.farmhelper.features.Rewarp;
 import com.jelly.farmhelper.hud.ClickGui;
 import com.jelly.farmhelper.misc.Utils;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
@@ -11,7 +13,6 @@ import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
 
 public class FarmHelperCommand {
-
     public static final ModCommand[] commands = {
             new ModCommand("settings", "Opens the settings GUI.",
                     ClientCommandManager.literal("settings")
@@ -27,6 +28,35 @@ public class FarmHelperCommand {
                             .then(ClientCommandManager.literal("save").executes(context -> {
                                 Config.save();
                                 Utils.info("§aSaved your current settings to the configuration file.");
+                                return SINGLE_SUCCESS;
+                            }))
+            ),
+            new ModCommand("warp", "Warps to the saved location.",
+                    ClientCommandManager.literal("warp")
+                            .then(ClientCommandManager.literal("add")
+                                    .then(ClientCommandManager.argument("name", StringArgumentType.greedyString())
+                                            .executes(context -> {
+                                                String name = StringArgumentType.getString(context, "name");
+                                                Rewarp.addWarp(name);
+                                                return SINGLE_SUCCESS;
+                                            })))
+                            .then(ClientCommandManager.literal("remove")
+                                    .then(ClientCommandManager.argument("name", StringArgumentType.greedyString())
+                                            .suggests((context, builder) -> {
+                                                com.google.gson.JsonObject data = Rewarp.warps.value();
+                                                if (data == null) return builder.buildFuture();
+                                                for (java.util.Map.Entry<String, com.google.gson.JsonElement> entry : data.entrySet()) {
+                                                    builder.suggest(entry.getKey());
+                                                }
+                                                return builder.buildFuture();
+                                            })
+                                            .executes(context -> {
+                                                String name = StringArgumentType.getString(context, "name");
+                                                Rewarp.removeWarp(name);
+                                                return SINGLE_SUCCESS;
+                                            })))
+                            .then(ClientCommandManager.literal("removeall").executes(context -> {
+                                Rewarp.clearWarps();
                                 return SINGLE_SUCCESS;
                             }))
             )

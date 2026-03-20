@@ -54,6 +54,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.entity.SimpleEntityLookup;
 import org.apache.commons.io.IOUtils;
+import org.joml.Vector3i;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -75,7 +76,7 @@ import static com.jelly.farmhelper.Main.mc;
 import static net.fabricmc.loader.impl.FabricLoaderImpl.MOD_ID;
 
 public class Utils {
-    public static final MessageIndicator farmhelperIndicator = new MessageIndicator(0x5ca0bf, null, Text.of("Message from com.jelly.farmhelper mod."), "com.jelly.farmhelper Mod");
+    public static final MessageIndicator farmhelperIndicator = new MessageIndicator(0x5ca0bf, null, Text.of("Message FarmHelper mod."), "FarmHelper Mod");
     private static final HashSet<String> modernIslands = Sets.newHashSet(
             "Hub",
             "Galatea",
@@ -159,7 +160,7 @@ public class Utils {
     }
 
     public static MutableText getTag() {
-        return Text.literal("[com.jelly.farmhelper] ").withColor(0x5ca0bf);
+        return Text.literal("[FarmHelper] ").withColor(0x5ca0bf);
     }
 
     public static MutableText getShortTag() {

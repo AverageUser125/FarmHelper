@@ -4,11 +4,12 @@ import com.jelly.farmhelper.config.Config;
 import com.jelly.farmhelper.events.ChatMsgEvent;
 import com.jelly.farmhelper.events.OverlayMsgEvent;
 import com.jelly.farmhelper.events.PartyChatMsgEvent;
-import com.jelly.farmhelper.features.SpaceFarmer;
+import com.jelly.farmhelper.features.*;
 import com.jelly.farmhelper.hud.ClickGui;
+import com.jelly.farmhelper.misc.Rendering;
 import com.jelly.farmhelper.misc.Utils;
 import com.mojang.brigadier.CommandDispatcher;
-import commands.FarmHelperCommand;
+import com.jelly.farmhelper.commands.FarmHelperCommand;
 import io.wispforest.owo.config.ui.ConfigScreenProviders;
 import meteordevelopment.orbit.EventBus;
 import meteordevelopment.orbit.IEventBus;
@@ -67,6 +68,7 @@ public class Main implements ClientModInitializer {
                         lookupInMethod.invoke(null, klass, MethodHandles.lookup()));
 
         eventBus.subscribe(SpaceFarmer.class);
+        eventBus.subscribe(Rewarp.class);
 
         LOGGER.info("It's time to get real, NoFrills mod initialized in {}ms.", Util.getMeasuringTimeMs() - start);
     }

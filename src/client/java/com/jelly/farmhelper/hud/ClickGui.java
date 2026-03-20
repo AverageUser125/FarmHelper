@@ -79,7 +79,8 @@ public class ClickGui extends BaseOwoScreen<FlowLayout> {
         FlowLayout parent = Containers.horizontalFlow(Sizing.content(), Sizing.content());
         this.categories = Lists.newArrayList(
                 new Category("Farming", List.of(
-                        new Module("Space Farmer", SpaceFarmer.instance, "Allows you to farm by holding space bar, sneak and press space to activate.\nThis feature will also lock your view once you start holding space.")
+                        new Module("Space Farmer", SpaceFarmer.instance, "Allows you to farm by holding space bar, sneak and press space to activate.\nThis feature will also lock your view once you start holding space."),
+                        new Module("Rewarp", SpaceFarmer.instance, "Warps to the start of the farm when done.")
                 )));
 
         this.categories.getLast().margins(Insets.of(5, 0, 3, 3));
