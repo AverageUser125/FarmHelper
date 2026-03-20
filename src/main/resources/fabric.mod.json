@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "farmhelper",
+  "version": "${version}",
+  "name": "FarmHelper",
+  "description": "This Mod makes stuff glow",
+  "authors": [
+    "NaorVaninu"
+  ],
+  "license": "GPLv3",
+  "icon": "icon-mod/logo.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.jelly.farmhelper.Main"
+    ],
+    "modmenu": [
+      "com.jelly.farmhelper.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "farmhelper.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "minecraft": "~1.21.10",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "modmenu": "*",
+    "cloth-config": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "badges": [
+        "environment:client"
+      ]
+    }
+  }
+}
