@@ -28,7 +28,7 @@ public class Config {
             try {
                 data = JsonParser.parseString(Files.readString(filePath)).getAsJsonObject();
             } catch (Exception exception) {
-                LOGGER.error("Unable to load NoFrills config file!", exception);
+                LOGGER.error("Unable to load FarmHelper config file!", exception);
             }
         } else {
             save();
@@ -38,9 +38,19 @@ public class Config {
 
     public static void save() {
         try {
+            int currentHash = data.hashCode();
+
+            // kip saving if nothing changed
+            if (currentHash == hash) {
+                return;
+            }
+
             Utils.atomicWrite(filePath, GSON.toJson(data));
+
+            hash = currentHash;
+
         } catch (Exception exception) {
-            LOGGER.error("Unable to save NoFrills config file!", exception);
+            LOGGER.error("Unable to save FarmHelper config file!", exception);
         }
     }
 

@@ -1,26 +1,37 @@
 package com.jelly.farmhelper.hud;
 
+import com.google.common.collect.Lists;
+import com.jelly.farmhelper.config.Config;
+import com.jelly.farmhelper.features.SpaceFarmer;
+import com.jelly.farmhelper.hud.components.FlatTextbox;
+import com.jelly.farmhelper.hud.components.PlainLabel;
 import com.jelly.farmhelper.misc.RenderColor;
+import com.jelly.farmhelper.misc.Rendering;
 import com.jelly.farmhelper.misc.Utils;
 import io.wispforest.owo.ui.base.BaseOwoScreen;
+import io.wispforest.owo.ui.component.ButtonComponent;
+import io.wispforest.owo.ui.component.Components;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.container.ScrollContainer;
-import io.wispforest.owo.ui.core.OwoUIAdapter;
-import io.wispforest.owo.ui.core.Sizing;
-import io.wispforest.owo.ui.core.Surface;
+import io.wispforest.owo.ui.core.*;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.input.KeyInput;
+import net.minecraft.text.Text;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static com.jelly.farmhelper.Main.mc;
 
 public class ClickGui extends BaseOwoScreen<FlowLayout> {
      public List<Category> categories;
         public ScrollContainer<FlowLayout> mainScroll;
         public int mouseX = 0;
         public int mouseY = 0;
+        private static int hash = 0;
 
         private boolean matchSearch(String text, String search) {
             return Utils.toLower(text).replaceAll(" ", "").contains(Utils.toLower(search).replaceAll(" ", ""));
@@ -73,5 +84,70 @@ public class ClickGui extends BaseOwoScreen<FlowLayout> {
         protected void build(FlowLayout root) {
             root.surface(Surface.VANILLA_TRANSLUCENT);
             FlowLayout parent = Containers.horizontalFlow(Sizing.content(), Sizing.content());
+            this.categories = Lists.newArrayList(
+                    new Category("Farming", List.of(
+                            new Module("Space Farmer", SpaceFarmer.instance, "Allows you to farm by holding space bar, sneak and press space to activate.\nThis feature will also lock your view once you start holding space.")
+            )));
+
+            this.categories.getLast().margins(Insets.of(5, 0, 3, 3));
+            for (Category category : this.categories) {
+                parent.child(category);
+            }
+            this.mainScroll = Containers.horizontalScroll(Sizing.fill(100), Sizing.fill(100), parent);
+            this.mainScroll.scrollbarThiccness(2).scrollbar(ScrollContainer.Scrollbar.flat(Color.ofArgb(0xffffffff)));
+            root.child(this.mainScroll);
+            FlatTextbox searchBox = new FlatTextbox(Sizing.fixed(200));
+            searchBox.setSuggestion("Search...");
+            searchBox.margins(Insets.of(0, 3, 0, 0));
+            searchBox.positioning(Positioning.relative(50, 100));
+            searchBox.onChanged().subscribe(value -> {
+                if (value.isEmpty()) {
+                    searchBox.setSuggestion("Search...");
+                    for (Category category : this.categories) {
+                        category.scroll.child().clearChildren();
+                        for (Module module : category.features) {
+                            module.horizontalSizing(Sizing.fixed(category.categoryWidth));
+                            category.scroll.child().child(module);
+                        }
+                    }
+                } else {
+                    searchBox.setSuggestion("");
+                    for (Category category : this.categories) {
+                        List<Module> features = new ArrayList<>(category.features);
+                        features.removeIf(feature -> {
+                            if (matchSearch(feature.label.getText(), value) || matchSearch(feature.label.getTooltip(), value)) {
+                                return false;
+                            }
+                            if (feature.options != null) {
+                                for (FlowLayout setting : feature.options.settings) {
+                                    for (Component child : setting.children()) {
+                                        if (child instanceof PlainLabel label) {
+                                            if (matchSearch(label.getText(), value) || matchSearch(label.getTooltip(), value)) {
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            return true;
+                        });
+                        category.scroll.child().clearChildren();
+                        for (Module module : features) {
+                            module.horizontalSizing(Sizing.fixed(category.categoryWidth));
+                            category.scroll.child().child(module);
+                        }
+                    }
+                }
+            });
+            root.child(searchBox);
+            hash = Config.getHash();
         }
+    @Override
+    public void close() {
+        Config.save();
+        if (this.uiAdapter != null) {
+            this.uiAdapter.dispose();
+        }
+        super.close();
+    }
 }
