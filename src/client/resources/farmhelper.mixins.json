@@ -4,15 +4,21 @@
   "package": "com.jelly.farmhelper.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "CreeperEntityMixin",
-    "MinecraftClientMixin",
-    "PaneBlockMixin",
-    "WorldMixin",
-    "ClientPlayerInteractionManagerAccessor",
-    "ClientPlayNetworkHandlerMixin",
-    "ItemStackMixin",
-    "HandledScreenMixin",
-    "DataTrackerMixin",
-  ]
+      "BossBarHudAccessor",
+      "ClientConnectionMixin",
+      "ClientPlayerInteractionManagerAccessor",
+      "ClientPlayerInteractionManagerMixin",
+      "ClientPlayNetworkHandlerMixin",
+      "ClientWorldMixin",
+      "HandledScreenAccessor",
+      "HandledScreenMixin",
+      "InGameHudMixin",
+      "KeyboardMixin",
+      "MinecraftClientMixin",
+      "MouseMixin",
+      "PlayerListHudAccessor",
+      "WorldMixin",
+      "WorldRendererMixin"
+    ]
 }
 

@@ -73,7 +73,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static com.jelly.farmhelper.Main.*;
-import static com.mojang.text2speech.Narrator.LOGGER;
 import static net.fabricmc.loader.impl.FabricLoaderImpl.MOD_ID;
 
 public class Utils {
