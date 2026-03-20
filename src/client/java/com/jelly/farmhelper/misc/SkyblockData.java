@@ -1,5 +1,9 @@
 package com.jelly.farmhelper.misc;
 
+import com.jelly.farmhelper.events.ChatMsgEvent;
+import com.jelly.farmhelper.events.ReceivePacketEvent;
+import com.jelly.farmhelper.events.ServerJoinEvent;
+import com.jelly.farmhelper.events.WorldTickEvent;
 import meteordevelopment.orbit.EventHandler;
 import meteordevelopment.orbit.EventPriority;
 import net.minecraft.client.network.PlayerListEntry;
@@ -7,10 +11,6 @@ import net.minecraft.network.packet.s2c.query.PingResultS2CPacket;
 import net.minecraft.scoreboard.*;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Util;
-import com.jelly.farmhelper.events.ChatMsgEvent;
-import com.jelly.farmhelper.events.ReceivePacketEvent;
-import com.jelly.farmhelper.events.ServerJoinEvent;
-import com.jelly.farmhelper.events.WorldTickEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -189,8 +189,8 @@ public class SkyblockData {
 
     @EventHandler
     private static void onPing(ReceivePacketEvent event) {
-        if (showPing && event.packet instanceof PingResultS2CPacket pingPacket) {
-            Utils.infoFormat("§aPing: §f{}ms", Util.getMeasuringTimeMs() - pingPacket.startTime());
+        if (showPing && event.packet instanceof PingResultS2CPacket(long startTime)) {
+            Utils.infoFormat("§aPing: §f{}ms", Util.getMeasuringTimeMs() - startTime);
             showPing = false;
         }
     }

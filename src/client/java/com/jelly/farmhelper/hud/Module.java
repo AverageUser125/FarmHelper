@@ -1,11 +1,11 @@
 package com.jelly.farmhelper.hud;
 
+import com.jelly.farmhelper.config.Feature;
+import com.jelly.farmhelper.hud.components.PlainLabel;
 import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.core.*;
 import net.minecraft.client.gui.Click;
 import net.minecraft.text.Text;
-import com.jelly.farmhelper.config.Feature;
-import com.jelly.farmhelper.hud.components.PlainLabel;
 import org.lwjgl.glfw.GLFW;
 
 import static com.jelly.farmhelper.Main.mc;

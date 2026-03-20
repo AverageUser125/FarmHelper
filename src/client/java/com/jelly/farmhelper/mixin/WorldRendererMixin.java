@@ -1,7 +1,6 @@
 package com.jelly.farmhelper.mixin;
 
-import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import com.llamalad7.mixinextras.sugar.Local;
+import com.jelly.farmhelper.events.WorldRenderEvent;
 import com.mojang.blaze3d.buffers.GpuBufferSlice;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.RenderTickCounter;
@@ -10,8 +9,6 @@ import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.util.BufferAllocator;
 import net.minecraft.client.util.ObjectAllocator;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.Entity;
-import com.jelly.farmhelper.events.WorldRenderEvent;
 import org.joml.Matrix4f;
 import org.joml.Vector4f;
 import org.spongepowered.asm.mixin.Final;
@@ -28,7 +25,7 @@ public abstract class WorldRendererMixin {
 
     @Unique
     @Final
-    private VertexConsumerProvider.Immediate immediate = VertexConsumerProvider.immediate(new BufferAllocator(1536 * 20));
+    private final VertexConsumerProvider.Immediate immediate = VertexConsumerProvider.immediate(new BufferAllocator(1536 * 20));
 
     @SuppressWarnings("mapping")
     // the compiler sometimes claims that the inject target wasn't found, but it works fine regardless

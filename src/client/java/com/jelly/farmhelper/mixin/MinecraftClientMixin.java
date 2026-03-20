@@ -1,5 +1,7 @@
 package com.jelly.farmhelper.mixin;
 
+import com.jelly.farmhelper.config.Config;
+import com.jelly.farmhelper.events.*;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
@@ -10,8 +12,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.BlockPos;
-import com.jelly.farmhelper.config.Config;
-import com.jelly.farmhelper.events.*;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;

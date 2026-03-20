@@ -1,11 +1,11 @@
 package com.jelly.farmhelper.features;
 
+import com.jelly.farmhelper.config.Feature;
 import com.jelly.farmhelper.events.InputEvent;
 import com.jelly.farmhelper.events.ScreenOpenEvent;
 import com.jelly.farmhelper.misc.Utils;
 import meteordevelopment.orbit.EventHandler;
 import org.lwjgl.glfw.GLFW;
-import com.jelly.farmhelper.config.Feature;
 
 import static com.jelly.farmhelper.Main.mc;
 

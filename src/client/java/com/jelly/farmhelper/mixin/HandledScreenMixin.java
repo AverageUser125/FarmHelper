@@ -1,8 +1,12 @@
 package com.jelly.farmhelper.mixin;
 
+import com.jelly.farmhelper.events.ScreenRenderEvent;
+import com.jelly.farmhelper.events.SlotClickEvent;
+import com.jelly.farmhelper.events.TooltipRenderEvent;
+import com.jelly.farmhelper.misc.SlotOptions;
+import com.jelly.farmhelper.misc.Utils;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.minecraft.client.gui.Click;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
@@ -11,24 +15,15 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.text.Text;
-import com.jelly.farmhelper.events.ScreenRenderEvent;
-import com.jelly.farmhelper.events.SlotClickEvent;
-import com.jelly.farmhelper.events.TooltipRenderEvent;
-import com.jelly.farmhelper.misc.SlotOptions;
-import com.jelly.farmhelper.misc.Utils;
 import org.jetbrains.annotations.Nullable;
-import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.jelly.farmhelper.Main.eventBus;
@@ -45,6 +40,7 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
     protected int y;
     @Shadow
     protected int x;
+
     protected HandledScreenMixin(Text title) {
         super(title);
     }

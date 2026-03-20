@@ -5,16 +5,12 @@ import com.jelly.farmhelper.hud.ClickGui;
 import com.jelly.farmhelper.misc.Utils;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
+import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 
 import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
 
 public class FarmHelperCommand {
-
-    private static final LiteralArgumentBuilder<FabricClientCommandSource> queueCommandBuilder =
-            ClientCommandManager.literal("queue")
-                    .executes(context -> SINGLE_SUCCESS);
 
     public static final ModCommand[] commands = {
             new ModCommand("settings", "Opens the settings GUI.",
@@ -35,6 +31,9 @@ public class FarmHelperCommand {
                             }))
             )
     };
+    private static final LiteralArgumentBuilder<FabricClientCommandSource> queueCommandBuilder =
+            ClientCommandManager.literal("queue")
+                    .executes(context -> SINGLE_SUCCESS);
 
     public static void init(CommandDispatcher<FabricClientCommandSource> dispatcher) {
 

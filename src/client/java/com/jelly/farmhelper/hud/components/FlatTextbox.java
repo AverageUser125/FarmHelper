@@ -1,10 +1,10 @@
 package com.jelly.farmhelper.hud.components;
 
+import com.jelly.farmhelper.misc.Rendering;
 import io.wispforest.owo.ui.component.TextBoxComponent;
 import io.wispforest.owo.ui.core.Insets;
 import io.wispforest.owo.ui.core.Sizing;
 import net.minecraft.client.gui.DrawContext;
-import com.jelly.farmhelper.misc.Rendering;
 
 public class FlatTextbox extends TextBoxComponent {
     public int borderColor = 0xff5ca0bf;

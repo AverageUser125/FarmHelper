@@ -1,19 +1,16 @@
 package com.jelly.farmhelper.mixin;
 
+import com.jelly.farmhelper.events.EntityRemovedEvent;
+import com.jelly.farmhelper.events.WorldTickEvent;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.minecraft.block.BlockState;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.MutableWorldProperties;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
-import com.jelly.farmhelper.events.EntityRemovedEvent;
-import com.jelly.farmhelper.events.WorldTickEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

@@ -1,12 +1,9 @@
 package com.jelly.farmhelper.mixin;
 
-import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import com.llamalad7.mixinextras.sugar.Local;
-import net.minecraft.client.Mouse;
-import net.minecraft.client.input.MouseInput;
-import net.minecraft.entity.player.PlayerInventory;
 import com.jelly.farmhelper.events.InputEvent;
 import com.jelly.farmhelper.features.SpaceFarmer;
+import net.minecraft.client.Mouse;
+import net.minecraft.client.input.MouseInput;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

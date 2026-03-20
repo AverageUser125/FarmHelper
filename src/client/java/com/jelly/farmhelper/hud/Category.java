@@ -1,12 +1,12 @@
 package com.jelly.farmhelper.hud;
 
+import com.jelly.farmhelper.hud.components.PlainLabel;
 import io.wispforest.owo.ui.base.BaseComponent;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.container.ScrollContainer;
 import io.wispforest.owo.ui.core.*;
 import net.minecraft.text.Text;
-import com.jelly.farmhelper.hud.components.PlainLabel;
 
 import java.util.ArrayList;
 import java.util.Comparator;

@@ -4,11 +4,12 @@ import com.jelly.farmhelper.config.Config;
 import com.jelly.farmhelper.events.ChatMsgEvent;
 import com.jelly.farmhelper.events.OverlayMsgEvent;
 import com.jelly.farmhelper.events.PartyChatMsgEvent;
-import com.jelly.farmhelper.features.*;
+import com.jelly.farmhelper.features.SpaceFarmer;
+import com.jelly.farmhelper.hud.ClickGui;
 import com.jelly.farmhelper.misc.Utils;
 import com.mojang.brigadier.CommandDispatcher;
 import commands.FarmHelperCommand;
-import io.wispforest.owo.config.ui.ConfigScreen;
+import io.wispforest.owo.config.ui.ConfigScreenProviders;
 import meteordevelopment.orbit.EventBus;
 import meteordevelopment.orbit.IEventBus;
 import net.fabricmc.api.ClientModInitializer;
@@ -16,8 +17,6 @@ import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallba
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
 import net.minecraft.client.MinecraftClient;
-import io.wispforest.owo.config.ui.ConfigScreenProviders;
-import com.jelly.farmhelper.hud.ClickGui;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.util.Util;
 import org.slf4j.Logger;
@@ -31,6 +30,7 @@ public class Main implements ClientModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public static MinecraftClient mc;
     public static IEventBus eventBus = new EventBus();
+
     public static void registerCommands(CommandDispatcher<FabricClientCommandSource> dispatcher, CommandRegistryAccess access) {
         FarmHelperCommand.init(dispatcher);
     }

@@ -1,11 +1,11 @@
 package com.jelly.farmhelper.misc;
 
-import meteordevelopment.orbit.EventHandler;
-import meteordevelopment.orbit.EventPriority;
-import net.minecraft.entity.Entity;
 import com.jelly.farmhelper.events.EntityRemovedEvent;
 import com.jelly.farmhelper.events.EntityUpdatedEvent;
 import com.jelly.farmhelper.events.ServerJoinEvent;
+import meteordevelopment.orbit.EventHandler;
+import meteordevelopment.orbit.EventPriority;
+import net.minecraft.entity.Entity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,9 @@
 package com.jelly.farmhelper.hud;
 
+import com.jelly.farmhelper.config.*;
+import com.jelly.farmhelper.hud.components.*;
+import com.jelly.farmhelper.misc.Rendering;
+import com.jelly.farmhelper.misc.Utils;
 import io.wispforest.owo.ui.base.BaseComponent;
 import io.wispforest.owo.ui.base.BaseOwoScreen;
 import io.wispforest.owo.ui.component.ButtonComponent;
@@ -13,10 +17,6 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.input.KeyInput;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
-import com.jelly.farmhelper.config.*;
-import com.jelly.farmhelper.hud.components.*;
-import com.jelly.farmhelper.misc.Rendering;
-import com.jelly.farmhelper.misc.Utils;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
 

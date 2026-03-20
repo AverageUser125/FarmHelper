@@ -1,12 +1,12 @@
 package com.jelly.farmhelper.misc;
 
+import com.jelly.farmhelper.events.ScreenOpenEvent;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Text;
-import com.jelly.farmhelper.events.ScreenOpenEvent;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

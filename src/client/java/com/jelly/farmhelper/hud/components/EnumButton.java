@@ -1,11 +1,11 @@
 package com.jelly.farmhelper.hud.components;
 
+import com.jelly.farmhelper.hud.Settings;
 import io.wispforest.owo.ui.component.ButtonComponent;
 import io.wispforest.owo.ui.component.TextBoxComponent;
 import io.wispforest.owo.util.EventSource;
 import io.wispforest.owo.util.EventStream;
 import net.minecraft.text.Text;
-import com.jelly.farmhelper.hud.Settings;
 
 public class EnumButton<T extends Enum<T>> extends ButtonComponent {
     private final T[] values;

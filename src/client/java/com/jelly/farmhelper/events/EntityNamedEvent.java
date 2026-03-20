@@ -1,8 +1,8 @@
 package com.jelly.farmhelper.events;
 
+import com.jelly.farmhelper.misc.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.text.Text;
-import com.jelly.farmhelper.misc.Utils;
 
 public class EntityNamedEvent {
     public Entity entity;

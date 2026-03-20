@@ -1,12 +1,12 @@
 package com.jelly.farmhelper.hud.components;
 
+import com.jelly.farmhelper.misc.Rendering;
 import io.wispforest.owo.ui.component.ButtonComponent;
 import io.wispforest.owo.ui.core.Sizing;
 import io.wispforest.owo.util.EventSource;
 import io.wispforest.owo.util.EventStream;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
-import com.jelly.farmhelper.misc.Rendering;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.List;

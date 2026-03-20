@@ -4,6 +4,9 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.Sets;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.jelly.farmhelper.mixin.BossBarHudAccessor;
+import com.jelly.farmhelper.mixin.HandledScreenAccessor;
+import com.jelly.farmhelper.mixin.PlayerListHudAccessor;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.minecraft.MinecraftProfileTextures;
 import com.mojang.authlib.minecraft.MinecraftSessionService;
@@ -45,16 +48,11 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
-import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.RaycastContext;
 import net.minecraft.world.entity.SimpleEntityLookup;
-import com.jelly.farmhelper.mixin.BossBarHudAccessor;
-import com.jelly.farmhelper.mixin.HandledScreenAccessor;
-import com.jelly.farmhelper.mixin.PlayerListHudAccessor;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
@@ -72,7 +70,8 @@ import java.util.function.Predicate;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static com.jelly.farmhelper.Main.*;
+import static com.jelly.farmhelper.Main.LOGGER;
+import static com.jelly.farmhelper.Main.mc;
 import static net.fabricmc.loader.impl.FabricLoaderImpl.MOD_ID;
 
 public class Utils {
@@ -215,6 +214,7 @@ public class Utils {
     public static boolean isInDungeons() {
         return isInArea("Catacombs");
     }
+
     /**
      * Returns true if the current island has either loot chests or the Croesus NPC.
      */

@@ -1,5 +1,9 @@
 package com.jelly.farmhelper.hud.components;
 
+import com.jelly.farmhelper.config.SettingColor;
+import com.jelly.farmhelper.hud.Settings;
+import com.jelly.farmhelper.misc.RenderColor;
+import com.jelly.farmhelper.misc.Utils;
 import io.wispforest.owo.ui.component.BoxComponent;
 import io.wispforest.owo.ui.component.ButtonComponent;
 import io.wispforest.owo.ui.component.Components;
@@ -8,13 +12,6 @@ import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.core.*;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
-import com.jelly.farmhelper.config.SettingColor;
-import com.jelly.farmhelper.hud.Settings;
-import com.jelly.farmhelper.hud.components.FlatSlider;
-import com.jelly.farmhelper.hud.components.FlatTextbox;
-import com.jelly.farmhelper.hud.components.PlainLabel;
-import com.jelly.farmhelper.misc.RenderColor;
-import com.jelly.farmhelper.misc.Utils;
 
 import java.util.ArrayList;
 import java.util.List;

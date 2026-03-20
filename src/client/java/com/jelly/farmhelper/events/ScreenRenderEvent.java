@@ -1,5 +1,7 @@
 package com.jelly.farmhelper.events;
 
+import com.jelly.farmhelper.misc.RenderColor;
+import com.jelly.farmhelper.misc.Rendering;
 import com.mojang.blaze3d.pipeline.RenderPipeline;
 import io.wispforest.owo.ui.core.Color;
 import io.wispforest.owo.ui.renderstate.LineElementRenderState;
@@ -8,8 +10,6 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Text;
-import com.jelly.farmhelper.misc.RenderColor;
-import com.jelly.farmhelper.misc.Rendering;
 import org.joml.Matrix3x2f;
 
 import java.util.Optional;
