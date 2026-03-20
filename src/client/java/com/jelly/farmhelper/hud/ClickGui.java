@@ -31,7 +31,6 @@ public class ClickGui extends BaseOwoScreen<FlowLayout> {
         public ScrollContainer<FlowLayout> mainScroll;
         public int mouseX = 0;
         public int mouseY = 0;
-        private static int hash = 0;
 
         private boolean matchSearch(String text, String search) {
             return Utils.toLower(text).replaceAll(" ", "").contains(Utils.toLower(search).replaceAll(" ", ""));
@@ -140,7 +139,6 @@ public class ClickGui extends BaseOwoScreen<FlowLayout> {
                 }
             });
             root.child(searchBox);
-            hash = Config.getHash();
         }
     @Override
     public void close() {

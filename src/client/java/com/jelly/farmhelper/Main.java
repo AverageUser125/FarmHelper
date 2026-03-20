@@ -8,6 +8,7 @@ import com.jelly.farmhelper.features.*;
 import com.jelly.farmhelper.misc.Utils;
 import com.mojang.brigadier.CommandDispatcher;
 import commands.FarmHelperCommand;
+import io.wispforest.owo.config.ui.ConfigScreen;
 import meteordevelopment.orbit.EventBus;
 import meteordevelopment.orbit.IEventBus;
 import net.fabricmc.api.ClientModInitializer;
@@ -41,7 +42,7 @@ public class Main implements ClientModInitializer {
         mc = MinecraftClient.getInstance();
 
         Config.load();
-        ConfigScreenProviders.register(MOD_ID, screen -> new ClickGui());
+        ConfigScreenProviders.register("com.jelly.farmhelper", screen -> new ClickGui());
         ClientCommandRegistrationCallback.EVENT.register(Main::registerCommands);
 
         ClientReceiveMessageEvents.ALLOW_GAME.register((message, overlay) -> {
